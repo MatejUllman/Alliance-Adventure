@@ -47,7 +47,7 @@ public class PlayerMovementWASD : MonoBehaviour
         }
         else
         {
-            speed = 1f;
+            speed = 2.5f;
         }
 
         //turning to the point of movement
