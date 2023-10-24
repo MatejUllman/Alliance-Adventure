@@ -15,11 +15,13 @@ public class PlayerMovementWASD : MonoBehaviour
     [SerializeField] private string inputNameVertical;
     [SerializeField] private string inputNameJump;
 
+
+    //smoother rotation
+    [SerializeField]private float rotationSpeed;
+
    
 
     private Rigidbody rb;
-   
-
     private float inputHorizontal;
     private float inputVertical;
 
@@ -33,22 +35,46 @@ public class PlayerMovementWASD : MonoBehaviour
     private void Update()
     {
         //Movement
-        inputHorizontal = Input.GetAxisRaw(inputNameHorizontal);
-        inputVertical = Input.GetAxisRaw(inputNameVertical);
+        
+        inputHorizontal = Input.GetAxis(inputNameHorizontal);
+        inputVertical = Input.GetAxis(inputNameVertical);
+        Vector3 movementDirection = new Vector3(inputHorizontal, 0, inputVertical);
+        movementDirection.Normalize();
+        transform.Translate(movementDirection * speed * Time.deltaTime,Space.World);
+        if (isGrounded())
+        {
+            speed = 5f;
+        }
+        else
+        {
+            speed = 1f;
+        }
 
-        //jump
+        //turning to the point of movement
+        if (movementDirection!= Vector3.zero )
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+
+
+        Jump();
+     
+    }
+
+    public void Jump()
+    {
         if (Input.GetButtonDown(inputNameJump) && isGrounded())
         {
-            rb.velocity = Vector3.up* jumpForce;
+            rb.velocity = Vector3.up * jumpForce;
         }
     }
-
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector3(inputHorizontal * speed * Time.fixedDeltaTime, rb.velocity.y, inputVertical * speed * Time.fixedDeltaTime);
-    }
+   
     bool isGrounded()
     {
+       
         return Physics.Raycast(transform.position, Vector3.down, groundDis);
+
     }
+   
 }
