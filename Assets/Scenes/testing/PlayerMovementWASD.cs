@@ -6,7 +6,8 @@ public class PlayerMovementWASD : MonoBehaviour
 {
     //jump
     [SerializeField] float jumpForce = 5f;
-    [SerializeField] float groundDis = 1.5f;
+
+    private bool isGrounded = true;
 
 
     //Movement
@@ -41,14 +42,7 @@ public class PlayerMovementWASD : MonoBehaviour
         Vector3 movementDirection = new Vector3(inputHorizontal, 0, inputVertical);
         movementDirection.Normalize();
         transform.Translate(movementDirection * speed * Time.deltaTime,Space.World);
-        if (isGrounded())
-        {
-            speed = 5f;
-        }
-        else
-        {
-            speed = 2.5f;
-        }
+       
 
         //turning to the point of movement
         if (movementDirection!= Vector3.zero )
@@ -59,22 +53,26 @@ public class PlayerMovementWASD : MonoBehaviour
 
 
         Jump();
+        
      
     }
 
     public void Jump()
     {
-        if (Input.GetButtonDown(inputNameJump) && isGrounded())
+        if (Input.GetButtonDown(inputNameJump) && isGrounded)
         {
-            rb.velocity = Vector3.up * jumpForce;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
     }
-   
-    bool isGrounded()
+    private void OnCollisionEnter(Collision collision)
     {
-       
-        return Physics.Raycast(transform.position, Vector3.down, groundDis);
-
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        };
     }
-   
+
+
+
 }
