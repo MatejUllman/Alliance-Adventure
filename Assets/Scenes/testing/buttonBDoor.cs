@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class button : MonoBehaviour, IInteractable
+public class buttonBDoor : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject doorhinge;
+    [SerializeField] private Animator myDoor = null;
     [SerializeField] private GameObject buttonpress;
 
     [SerializeField] private string Prompt;
+    [SerializeField] private bool isOpened = false;
 
     private float timer;
     private bool isinteractable = true;
@@ -17,8 +18,8 @@ public class button : MonoBehaviour, IInteractable
 
     private void Update()
     {
-       
-        if(!isinteractable)
+
+        if (!isinteractable)
         {
             timer -= Time.deltaTime;
             if (timer <= 0f)
@@ -32,14 +33,23 @@ public class button : MonoBehaviour, IInteractable
     {
         if (isinteractable)
         {
-            doorhinge.transform.rotation = Quaternion.Euler(0, 90, 0);
-            buttonpress.transform.localScale = new Vector3(0.2f,0.15f,0.4f);
-            timer = 1f;
-            isinteractable= false;
+            if (!isOpened)
+            {
+                myDoor.Play("openBDoor", 0, 0.0f);
+                buttonpress.transform.localScale = new Vector3(0.2f, 0.15f, 0.4f);
+                timer = 1f;
+                isinteractable = false;
+                isOpened = true;
+            }
+            else if (isOpened)
+            {
+                myDoor.Play("closeBDooor", 0, 0.0f);
+                isOpened = false;
+            }
         }
-        
+
         return true;
     }
 
-    
+
 }

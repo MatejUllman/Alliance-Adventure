@@ -118,9 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313b5e7b365d6994b8d3775200d006d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorhinge: {fileID: 0}
+  myDoor: {fileID: 0}
   buttonpress: {fileID: 3381606253642580834}
   Prompt: 
+  isOpened: 0
 --- !u!1 &3410347879175833434
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5333917644400427209}
   - component: {fileID: 7432300627522141987}
-  - component: {fileID: 770388555358018200}
   m_Layer: 0
   m_Name: pleasure plate office
   m_TagString: Untagged
@@ -177,20 +177,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &770388555358018200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3410347879175833434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5910d98d446e26b4089091716a5461c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorhinge: {fileID: 0}
-  platepress: {fileID: 3381606253642580834}
 --- !u!1 &8426532528714416298
 GameObject:
   m_ObjectHideFlags: 0

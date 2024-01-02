@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PleasurePlate : MonoBehaviour
 {
-    [SerializeField] GameObject doorhinge;
+    [SerializeField] Animator myDoor = null;
 
     [SerializeField] GameObject platepress;
     private float timer;
-    bool IsOpened = false;
+    //bool IsOpened = false;
 
 
 
@@ -30,7 +30,8 @@ public class PleasurePlate : MonoBehaviour
             if(timer <= 0f)
             {
                 //Debug.Log("èas dobìhl");
-                doorhinge.transform.rotation = Quaternion.Euler(0, 0, 0);
+                //doorhinge.transform.rotation = Quaternion.Euler(0, 0, 0);
+                myDoor.Play("closeSDooor", 0, 0.0f);
                 platepress.transform.localScale = new Vector3(1.2f,0.1f,1.2f);  
             }
         }
@@ -39,16 +40,18 @@ public class PleasurePlate : MonoBehaviour
     {
 
         platepress.transform.localScale= new Vector3(0.6f,0.05f,0.6f);
-        doorhinge.transform.rotation = Quaternion.Euler(0, 90, 0);
+        myDoor.Play("openSDoor", 0, 0.0f);
+        //doorhinge.transform.rotation = Quaternion.Euler(0, 90, 0);
 
 
     }
     private void OnTriggerStay(Collider other)
     {
-       
-            doorhinge.transform.rotation = Quaternion.Euler(0, 90, 0);
 
-            timer = 1f;
+        //doorhinge.transform.rotation = Quaternion.Euler(0, 90, 0);
+        //myDoor.Play("closeSDoor", 0, 0.0f);
+
+        timer = 1f;
 
           
 

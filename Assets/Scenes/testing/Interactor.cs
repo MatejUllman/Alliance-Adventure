@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
+    
     [SerializeField]  Transform InteractionPoint;
     [SerializeField]  float InteractionPointRadius = 0.5f;
     [SerializeField]  LayerMask InteracteableMask;
 
     private readonly Collider[] colliders = new Collider[3];
     [SerializeField] int numFound;
+   
 
     private void Update()
     {
