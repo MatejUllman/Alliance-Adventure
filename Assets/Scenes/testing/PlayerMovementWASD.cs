@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovementWASD : MonoBehaviour
 {
 
-    Animator anim;
+    private Animator anim;
     
     //jump
     [SerializeField] float jumpForce = 5f;
@@ -33,7 +33,8 @@ public class PlayerMovementWASD : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        anim= GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        
         
         
     }
@@ -49,15 +50,15 @@ public class PlayerMovementWASD : MonoBehaviour
             transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
 
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.D))
+     
+        if(movementDirection != Vector3.zero)
         {
-            anim.SetBool("walks", true);
+            anim.SetBool("walks",true);
         }
-        else if(!Input.GetKey(KeyCode.W) || !Input.GetKey(KeyCode.A) || !Input.GetKey(KeyCode.S) || !Input.GetKey(KeyCode.D))
+        else
         {
             anim.SetBool("walks", false);
         }
-
 
         
 
@@ -83,8 +84,13 @@ public class PlayerMovementWASD : MonoBehaviour
     {
         if (Input.GetButtonDown(inputNameJump) && isGrounded)
         {
+            anim.SetBool("grounded", false);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+        }
+        else
+        {
+            anim.SetBool("grounded", true);
         }
     }
     private void OnCollisionEnter(Collision collision)
