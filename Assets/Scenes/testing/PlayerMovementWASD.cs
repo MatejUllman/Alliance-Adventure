@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerMovementWASD : MonoBehaviour
 {
+    [SerializeField] private Animator myDoor = null;
+    private bool isOpened = false;
+    private bool isinteractable = true;
 
     private Animator anim;
     
@@ -99,7 +102,26 @@ public class PlayerMovementWASD : MonoBehaviour
         {
             
             isGrounded = true;
-        };
+        }else if (collision.gameObject.CompareTag("KeyDoor"))
+        {
+           
+                if (!isOpened)
+                {
+                    myDoor.Play("openSDoor", 0, 0.0f);
+                    
+                    
+                    isinteractable = false;
+                    isOpened = true;
+                }
+                else if (isOpened)
+                {
+                    myDoor.Play("closeSDooor", 0, 0.0f);
+                    isOpened = false;
+                }
+            
+
+           
+        }
     }
 
 

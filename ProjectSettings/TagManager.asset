@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - big door
+  - KeyDoor
   layers:
   - Default
   - TransparentFX
