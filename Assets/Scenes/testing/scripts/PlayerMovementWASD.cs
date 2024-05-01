@@ -102,6 +102,10 @@ public class PlayerMovementWASD : MonoBehaviour
         {
             
             isGrounded = true;
+
+
+            //If I can open locked door with key
+
         }else if (collision.gameObject.CompareTag("KeyDoor"))
         {
            
