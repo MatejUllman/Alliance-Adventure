@@ -7,7 +7,7 @@ public class PlayerMovementWASD : MonoBehaviour
 {
     [SerializeField] private Animator myDoor = null;
     private bool isOpened = false;
-    private bool isinteractable = true;
+    
 
     private Animator anim;
     
@@ -110,7 +110,7 @@ public class PlayerMovementWASD : MonoBehaviour
                     myDoor.Play("openSDoor", 0, 0.0f);
                     
                     
-                    isinteractable = false;
+                    
                     isOpened = true;
                 }
                 else if (isOpened)

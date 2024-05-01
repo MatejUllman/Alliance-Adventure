@@ -1635,7 +1635,7 @@ MonoBehaviour:
   - {fileID: 1064461162}
   offset: {x: -2.5, y: 9, z: -34}
   minFOV: 40
-  maxFOV: 10
+  maxFOV: 15
   smoothTime: 0.5
 --- !u!1 &1409529247
 GameObject:

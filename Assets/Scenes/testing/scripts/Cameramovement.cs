@@ -17,7 +17,7 @@ public class Cameramovement : MonoBehaviour
 
     //setings of FOV
     [SerializeField] private float minFOV = 40f;
-    [SerializeField] private float maxFOV = 10f;
+    [SerializeField] private float maxFOV = 15f;
 
 
     //velocity of camera
