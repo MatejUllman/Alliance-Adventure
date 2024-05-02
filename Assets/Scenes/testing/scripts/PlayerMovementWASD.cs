@@ -104,27 +104,34 @@ public class PlayerMovementWASD : MonoBehaviour
             isGrounded = true;
 
 
-            //If I can open locked door with key
-
-        }else if (collision.gameObject.CompareTag("KeyDoor"))
-        {
-           
-                if (!isOpened)
-                {
-                    myDoor.Play("openSDoor", 0, 0.0f);
-                    
-                    
-                    
-                    isOpened = true;
-                }
-                else if (isOpened)
-                {
-                    myDoor.Play("closeSDooor", 0, 0.0f);
-                    isOpened = false;
-                }
             
 
-           
+        }
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        //If I can open locked door with key
+        if(other.gameObject.CompareTag("KeyDoor"))
+        {
+            Debug.Log("otevri se");
+
+            if (!isOpened)
+            {
+                myDoor.Play("openSDoor", 0, 0.0f);
+
+
+
+                isOpened = true;
+            }
+            else if (isOpened)
+            {
+                myDoor.Play("closeSDooor", 0, 0.0f);
+                isOpened = false;
+            }
+
+
+
         }
     }
 
