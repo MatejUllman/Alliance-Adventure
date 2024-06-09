@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-public class buttonBDoor : MonoBehaviour, IInteractable
+public class buttonBTwoDoor : MonoBehaviour
 {
     [SerializeField] private Animator myDoor = null;
     [SerializeField] private GameObject buttonpress;
@@ -35,7 +34,7 @@ public class buttonBDoor : MonoBehaviour, IInteractable
         {
             if (!isOpened)
             {
-                myDoor.Play("openBDoor", 0, 0.0f);
+                myDoor.Play("openBDoor2", 0, 0.0f);
                 buttonpress.transform.localScale = new Vector3(0.2f, 0.15f, 0.4f);
                 timer = 1f;
                 isinteractable = false;
@@ -43,13 +42,12 @@ public class buttonBDoor : MonoBehaviour, IInteractable
             }
             else if (isOpened)
             {
-                myDoor.Play("closeBDooor", 0, 0.0f);
+                myDoor.Play("closeBDooor2", 0, 0.0f);
                 isOpened = false;
             }
         }
 
         return true;
     }
-
 
 }
