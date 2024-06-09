@@ -12,7 +12,8 @@ public class Interactor : MonoBehaviour
 
     private readonly Collider[] colliders = new Collider[3];
     [SerializeField] int numFound;
-   
+    [SerializeField] private string inputNameAction;
+
 
     private void Update()
     {
@@ -21,7 +22,7 @@ public class Interactor : MonoBehaviour
         if(numFound > 0)
         {
             var interactable = colliders[0].GetComponent<IInteractable>();
-            if(interactable != null && Input.GetKeyDown(KeyCode.E))
+            if(interactable != null && Input.GetButtonDown(inputNameAction))
             {
                 interactable.Interact(this);
             }

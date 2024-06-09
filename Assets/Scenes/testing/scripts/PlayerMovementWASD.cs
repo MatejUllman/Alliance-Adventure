@@ -22,6 +22,8 @@ public class PlayerMovementWASD : MonoBehaviour
     [SerializeField] private string inputNameHorizontal;
     [SerializeField] private string inputNameVertical;
     [SerializeField] private string inputNameJump;
+    
+
 
 
     //smoother rotation
@@ -82,6 +84,7 @@ public class PlayerMovementWASD : MonoBehaviour
         
      
     }
+   
 
     public void Jump()
     {
