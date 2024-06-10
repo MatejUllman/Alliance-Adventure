@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class conveyor_belt : MonoBehaviour
@@ -8,7 +7,7 @@ public class conveyor_belt : MonoBehaviour
     public float speed = 100f;
     public List<GameObject> gameObjects;
     public Vector3 direction;
-    private bool IsOn = false;
+    
 
    
 

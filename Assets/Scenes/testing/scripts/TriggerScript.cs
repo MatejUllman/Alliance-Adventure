@@ -22,7 +22,7 @@ public class TriggerScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             textObject.SetActive(true);
-            StartCoroutine(HideTextAfterDelay(5));
+            StartCoroutine(HideTextAfterDelay(10));
         }
     }
 
