@@ -47,6 +47,7 @@ public class PlayerMovementWASD : MonoBehaviour
     private void Update()
     {
         //Movement
+
       
             inputHorizontal = Input.GetAxis(inputNameHorizontal);
             inputVertical = Input.GetAxis(inputNameVertical);

@@ -44,7 +44,10 @@ public class buttonSDoor:MonoBehaviour, IInteractable
             else if(isOpened)
             {
                 myDoor.Play("closeSDooor", 0, 0.0f);
-                isOpened= false;
+                buttonpress.transform.localScale = new Vector3(0.2f, 0.15f, 0.4f);
+                isOpened = false;
+                isinteractable = false;
+                timer = 1f;
             }
         }
         
